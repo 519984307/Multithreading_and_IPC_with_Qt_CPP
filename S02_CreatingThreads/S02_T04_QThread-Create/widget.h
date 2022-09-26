@@ -23,6 +23,6 @@ private slots:
 private:
     Ui::Widget *ui;
 
-    QThread * thread;
+    QThread * thread = nullptr;
 };
 #endif // WIDGET_H
