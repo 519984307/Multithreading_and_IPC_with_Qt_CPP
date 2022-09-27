@@ -20,6 +20,9 @@ public:
 private slots:
     void on_start_pushButton_clicked();
 
+public:
+    void counting();
+
 private:
     Ui::Widget *ui;
 

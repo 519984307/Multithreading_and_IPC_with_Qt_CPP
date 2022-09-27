@@ -55,6 +55,7 @@ void Widget::on_start_pushButton_clicked()
     thread = QThread::create(countlambda, 10000);
     */
 
+    /*
     // 3. Non Named Lambda Function
     thread = QThread::create([](){
         for(int i{0} ; i < 100000 ; i ++){
@@ -63,6 +64,12 @@ void Widget::on_start_pushButton_clicked()
                         QThread::currentThreadId();
         }
 
+    });
+    */
+
+    // 4. Member Function, call from lambda function
+    thread = QThread::create([=]() {
+        counting();
     });
 
     connect(thread, &QThread::finished, thread, [](){
@@ -82,3 +89,11 @@ void Widget::on_start_pushButton_clicked()
     qDebug() << "Clicked on the start button.";
 }
 
+void Widget::counting() {
+    for (int i{0}; i < 10000; i++) {
+        qDebug() << "Counting method called : " << i
+                 << " thread :" << QThread::currentThread()
+                 << " id : " << QThread::currentThreadId()
+                 << "Thread is running : " << thread->isRunning();
+    }
+}
