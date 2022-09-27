@@ -36,7 +36,23 @@ void Widget::on_start_pushButton_clicked()
     }
     */
 
+    /*
+    // 1. Global Function
     thread = QThread::create(counting1, 10000);
+    */
+
+    // 2. Named Lambda Function
+    auto countlambda = [](int count){
+        for(int i{0} ; i < count ; i ++){
+            qDebug() << "countlambda counting...";
+            qDebug() << "Counting : " << i <<
+                        " thread :" << QThread::currentThread() << " id : " <<
+                        QThread::currentThreadId();
+        }
+    };
+
+    thread = QThread::create(countlambda, 10000);
+
     connect(thread, &QThread::finished, thread, [](){
         qDebug() << "Thread has finished";
     });
