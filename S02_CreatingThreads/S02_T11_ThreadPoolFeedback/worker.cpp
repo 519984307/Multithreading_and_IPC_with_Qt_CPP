@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QDebug>
+#include <QMetaObject>
 #include <QThread>
 #include <QVariant>
 
@@ -25,11 +26,18 @@ void Worker::run()
 
     for (int i{0}; i < loopIterations; i++) {
 
-        if (i % (loopIterations / progressSteps) == 0) {
+        if ((i +1) % (loopIterations / progressSteps) == 0) {
 
-            double percentage = (i * 100.0 / loopIterations);
+            double percentage = (i * 100.0 / loopIterations); // Without adding 1 to i the maximum percentage reported is 99%.
             // qDebug() << "Current percentage : " << percentage;
+
+            /*
+            // Sending feedback to the ui by subclass QEvent
             QApplication::postEvent(m_receiver, new ProgressEvent(QVariant::fromValue(percentage).toInt()));
+            */
+
+            // Sending feedback to the ui using QMetaObject::invokeMethod
+            QMetaObject::invokeMethod(m_receiver, "gotUpdate", Qt::QueuedConnection, Q_ARG(int, QVariant::fromValue(percentage).toInt()));
         }
     }
 }

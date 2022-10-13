@@ -22,6 +22,11 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::gotUpdate(int value)
+{
+    ui->progressBar->setValue(value);
+}
+
 
 void Widget::on_start_pushButton_clicked()
 {
@@ -36,7 +41,8 @@ void Widget::on_start_pushButton_clicked()
 
 void Widget::on_information_pushButton_clicked()
 {
-
+    qDebug() << "QThread::idealThreadCount : " << QThread::idealThreadCount();
+    qDebug() << "QThreadPool::globalInstance::maxThreadCount : " << QThreadPool::globalInstance()->maxThreadCount();
 }
 
 

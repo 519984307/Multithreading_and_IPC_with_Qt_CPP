@@ -15,6 +15,9 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+public slots:
+    void gotUpdate(int value);
+
 private slots:
     void on_start_pushButton_clicked();
 
