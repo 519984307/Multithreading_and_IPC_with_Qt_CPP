@@ -18,6 +18,7 @@ void PrintWorker::run()
 {
     while(!(*m_stop)) {
         // m_mutex->lock();
+        msleep(1);
         QMutexLocker locker(m_mutex);
 
         if (*m_stop) {
