@@ -71,11 +71,14 @@ void Widget::closeEvent(QCloseEvent *event)
     // The tutorial implementation results in a crash if the user tries to quit the application before the workerThread has finished.
 
     qDebug() << "closeEvent method called";
+    workerThread->quit();
 
+    /*
     // If the application is closed before the workerThread has completed then quit the workerThread to prevent the application crashing on exit
     if (workerThread) {
         qDebug() << "Attempting to end the workerThread";
-        workerThread->requestInterruption(); // This is handled in void Worker::doCounting()
+       //  workerThread->requestInterruption(); // This is handled in void Worker::doCounting()
         workerThread->exit();
     }
+    */
 }
