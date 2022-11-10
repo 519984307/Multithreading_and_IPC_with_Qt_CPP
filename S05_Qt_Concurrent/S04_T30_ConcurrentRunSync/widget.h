@@ -19,6 +19,7 @@ public:
 
 public:
     static void heavyWork();
+    void heavyWorkNonStatic(int updates);
 
 private slots:
     void on_start_pushButton_clicked();
@@ -33,5 +34,6 @@ private:
     Ui::Widget *ui;
 
     QFuture<void> future;
+    QFuture<void> future_02;
 };
 #endif // WIDGET_H

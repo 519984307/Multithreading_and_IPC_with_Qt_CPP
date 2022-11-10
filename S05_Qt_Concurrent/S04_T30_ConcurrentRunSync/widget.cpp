@@ -34,14 +34,30 @@ void Widget::heavyWork()
     }
 }
 
+void Widget::heavyWorkNonStatic(int updates)
+{
+    qDebug() << "Widget::heavyWorkNonStatic running in thread : " << QThread::currentThread();
+
+    int upper = 10E8;
+    int progressUpdateSteps = updates;
+
+    for (int i = 0; i < upper; i++) {
+        if (i % (upper / progressUpdateSteps) == 0) {
+            double percentage = (i * 1.0 / upper) * 100; // Multiply by 1.0 to convert i to a double.
+            qDebug() << "Percentage : " << QVariant(percentage).toInt() << " Calcuated in thread : " << QThread::currentThread();
+        }
+    }
+}
+
 
 void Widget::on_start_pushButton_clicked()
 {
     future = QtConcurrent::run(heavyWork);
-
     future.waitForFinished(); // Blocks the user interface
+    qDebug() << "1st Computation finished.";
 
-    qDebug() << "Computation finished.";
+    future_02 = QtConcurrent::run(&Widget::heavyWorkNonStatic, this, 10);
+    qDebug() << "2nd Computation finished.";
 }
 
 
