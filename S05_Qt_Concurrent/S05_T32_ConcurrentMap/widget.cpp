@@ -42,6 +42,12 @@ void Widget::modify(int &value)
     value = value * 10;
 }
 
+void Widget::modifyNonStatic(int &value)
+{
+    qDebug() << "Modifying " << value << " result : " << value * 10
+             << " Thread : " << QThread::currentThread();
+    value = value * 10;
+}
 
 void Widget::on_modify_pushButton_clicked()
 {
@@ -55,8 +61,10 @@ void Widget::on_modify_pushButton_clicked()
     */
 
     // Static method example
-
     future = QtConcurrent::map(list, modify);
+
+    // Non Static method example - Monday 14th November 2022 17:10 The following statement does not work.
+    // future = QtConcurrent::map(list, &Widget::modifyNonStatic);
     futureWatcher.setFuture(future);
 }
 

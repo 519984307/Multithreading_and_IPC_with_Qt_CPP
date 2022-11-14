@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+
 #include <QFuture>
 #include <QFutureWatcher>
 
@@ -17,21 +18,19 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-public:
-    static void modify(int &value);
-    void modifyNonStatic(int &value);
-
 private slots:
     void on_modify_pushButton_clicked();
 
-    void on_seeValue_pushButton_clicked();
+    void on_seeValues_pushButton_clicked();
+
+    static int modify(const int & value);
 
 private:
     Ui::Widget *ui;
 
     QList<int> list;
-    QFuture<void> future;
-    QFutureWatcher<void> futureWatcher;
+    QFuture<int> future;
+    QFutureWatcher<int> futureWatcher;
 
     // QWidget interface
 protected:
