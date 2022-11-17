@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>180</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="chooseDirectory_pushButton">
+       <property name="text">
+        <string>Choose Directory</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="directory_lineEdit"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="findFiles_pushButton">
+       <property name="text">
+        <string>Find Files</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="foundFiles_label">
+       <property name="text">
+        <string>:   Number of files found</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QGroupBox" name="singleThreaded_groupBox">
+       <property name="title">
+        <string>Single Threaded</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="singleThreaded_pushButton">
+            <property name="text">
+             <string>Single Threaded</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="singleThreaded_label">
+            <property name="text">
+             <string>Single Threaded Report</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="mapReduced_groupBox">
+       <property name="title">
+        <string>Map Reduced</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QPushButton" name="mapReduced_pushButton">
+            <property name="text">
+             <string>Map Reduced</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="mapReduced_label">
+            <property name="text">
+             <string>Map Reduced Report</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

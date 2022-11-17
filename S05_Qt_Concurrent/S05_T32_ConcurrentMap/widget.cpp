@@ -61,10 +61,17 @@ void Widget::on_modify_pushButton_clicked()
     */
 
     // Static method example
-    future = QtConcurrent::map(list, modify);
+    // future = QtConcurrent::map(list, modify);
 
-    // Non Static method example - Monday 14th November 2022 17:10 The following statement does not work.
+    // Non Static method example
+    // Monday 14th November 2022 17:10 The following statement, commented out, does not work.
     // future = QtConcurrent::map(list, &Widget::modifyNonStatic);
+    // Monday 14th November 2022 18:45 Wrapping the method in a Lambda expression works!
+    auto modify = [=](int &value) {
+        return modifyNonStatic(value);
+    };
+
+    future = QtConcurrent::map(list, modify);
     futureWatcher.setFuture(future);
 }
 
