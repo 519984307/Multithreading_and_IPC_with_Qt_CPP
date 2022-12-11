@@ -14,7 +14,7 @@ Widget::Widget(QWidget *parent)
     QDBusConnection connection = QDBusConnection::sessionBus();
 
     // Here you pass in the Object that you want to pass to DBus. Take note of this information, it is needed for the client.
-    connection.registerObject("CalculatorServicePath", slaveCalculator);
+    connection.registerObject("/CalculatorServicePath", slaveCalculator);
 
     // Here you pass in the service name. Take note of this information, it is needed for the client.
     connection.registerService("com.blikoon.CalculatorService");
